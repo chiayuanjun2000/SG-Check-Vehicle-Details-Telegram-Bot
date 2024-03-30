@@ -38,7 +38,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     print(f"Message from user ({update.message.chat.id}) in {message_type}: '{message_text}'")
 
     # Check if message from group or direct messaging
-    if message_type == "group":
+    if message_type == "group" or message_type == "supergroup":
         if BOT_USERNAME in message_text:
             new_text: str = message_text.replace(BOT_USERNAME, "").strip()
             response: str = handle_response(new_text)
