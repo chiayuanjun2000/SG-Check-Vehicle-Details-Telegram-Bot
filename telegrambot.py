@@ -21,12 +21,14 @@ async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 def handle_response(text: str) -> None:
     text_lower: str = text.lower()
 
-    # Simple input checker
-    if len(text_lower) > 8 or len(text_lower) < 4:
-        return "Carplate length cannot be greater than 8 or less than 4 (Characters and digits)"
-    else:
-        result = scraper.main(text_lower)
+    # Checksum checker
+    status_msg, valid_plate = checksum.plate_check(text_upper)
+
+    if valid_plate == True:
+        result = scraper.main(text_upper)
         return result
+    else: 
+        return status_msg
 
 
 
