@@ -1,6 +1,7 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 import scraper
+import checksum
 
 TOKEN = "INSERT API TOKEN HERE"
 BOT_USERNAME = "INSERT BOT USERNAME HERE"
@@ -19,7 +20,7 @@ async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 # Responses
 def handle_response(text: str) -> None:
-    text_lower: str = text.lower()
+    text_upper: str = text.upper()
 
     # Checksum checker
     status_msg, valid_plate = checksum.plate_check(text_upper)
