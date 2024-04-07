@@ -24,7 +24,7 @@ def plate_check(vehicle_plate: str) -> str:
         return "Invalid vehicle plate!\n(Vehicle plate length can only be between 4 and 8 characters)", valid_plate
 
     # Check if vehicle plate is alphanumeric (Vehicle plate can only contain alphabets or numbers)
-    if vehicle_plate[0].isalnum() == False:
+    if vehicle_plate.isalnum() == False:
         return "Invalid vehicle plate!\n(Vehicle plate can only contain alphabets or numbers)", valid_plate
 
     # Check if first character is alphabet (Vehicle plate has to start with alphabet)
